@@ -35,37 +35,33 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Column(
         children: [
           // Header Section with Gradient
+          // Header Section with Image + Red Overlay
           Container(
             height: MediaQuery.of(context).size.height * 0.4,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Color(0xFFE53935),
-                  Color(0xFFD32F2F),
-                  Color(0xFFC62828),
-                ],
-              ),
-            ),
             child: Stack(
+              fit: StackFit.expand,
               children: [
-                // Background pattern/decoration
-                Positioned.fill(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Colors.white.withValues(alpha: 0.1),
-                          Colors.transparent,
-                          Colors.black.withValues(alpha: 0.1),
-                        ],
-                      ),
+                // Background Image
+                Image.asset(
+                  'assets/images/login.jpg', // 👈 put your image here
+                  fit: BoxFit.cover,
+                ),
+
+                // Red overlay with 0.6 opacity
+                Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        const Color(0xFFE53935).withOpacity(0.6),
+                        const Color(0xFFD32F2F).withOpacity(0.6),
+                        const Color(0xFFC62828).withOpacity(0.6),
+                      ],
                     ),
                   ),
                 ),
+
                 // Content
                 SafeArea(
                   child: Padding(
@@ -74,7 +70,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Spacer(),
-                        // App Title
                         const Text(
                           'EventFlow',
                           style: TextStyle(
