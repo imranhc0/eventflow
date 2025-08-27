@@ -266,7 +266,7 @@ class _InvitationsScreenState extends State<InvitationsScreen> {
                                 onPressed: () =>
                                     _sendReminder(invitation['eventTitle']),
                                 isOutlined: true,
-                                height: 40,
+                                height: 50,
                               ),
                             ),
                             const SizedBox(width: AppConstants.paddingMedium),
@@ -274,7 +274,7 @@ class _InvitationsScreenState extends State<InvitationsScreen> {
                               child: CustomButton(
                                 text: 'View Details',
                                 onPressed: () => _viewEventDetails(invitation),
-                                height: 40,
+                                height: 50,
                               ),
                             ),
                           ],
@@ -459,7 +459,7 @@ class _InvitationsScreenState extends State<InvitationsScreen> {
           ),
           child: Column(
             children: [
-              // Handle
+              // Handle bar
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 8),
                 width: 40,
@@ -472,54 +472,49 @@ class _InvitationsScreenState extends State<InvitationsScreen> {
 
               // Content
               Expanded(
-                child: SingleChildScrollView(
+                child: ListView(
                   controller: scrollController,
                   padding: const EdgeInsets.all(AppConstants.paddingMedium),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        invitation['eventTitle'],
-                        style: Theme.of(context).textTheme.headlineMedium
-                            ?.copyWith(fontWeight: FontWeight.bold),
-                      ),
+                  children: [
+                    Text(
+                      invitation['eventTitle'],
+                      style: Theme.of(context).textTheme.headlineMedium
+                          ?.copyWith(fontWeight: FontWeight.bold),
+                    ),
 
-                      const SizedBox(height: AppConstants.paddingMedium),
+                    const SizedBox(height: AppConstants.paddingMedium),
 
-                      _buildDetailRow(
-                        'Type',
-                        invitation['eventType'],
-                        Icons.category,
-                      ),
-                      _buildDetailRow(
-                        'Venue',
-                        invitation['venue'],
-                        Icons.location_on,
-                      ),
-                      _buildDetailRow(
-                        'Date',
-                        DateFormat(
-                          'MMMM dd, yyyy',
-                        ).format(invitation['eventDate']),
-                        Icons.calendar_today,
-                      ),
+                    _buildDetailRow(
+                      'Type',
+                      invitation['eventType'],
+                      Icons.category,
+                    ),
+                    _buildDetailRow(
+                      'Venue',
+                      invitation['venue'],
+                      Icons.location_on,
+                    ),
+                    _buildDetailRow(
+                      'Date',
+                      DateFormat(
+                        'MMMM dd, yyyy',
+                      ).format(invitation['eventDate']),
+                      Icons.calendar_today,
+                    ),
 
-                      const SizedBox(height: AppConstants.paddingMedium),
+                    const SizedBox(height: AppConstants.paddingMedium),
 
-                      Text(
-                        'Guest Responses',
-                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          fontWeight: FontWeight.w600,
-                        ),
+                    Text(
+                      'Guest Responses',
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.w600,
                       ),
+                    ),
 
-                      const SizedBox(height: AppConstants.paddingMedium),
+                    const SizedBox(height: AppConstants.paddingMedium),
 
-                      _buildRSVPSummary(
-                        invitation['guests'] as List<GuestModel>,
-                      ),
-                    ],
-                  ),
+                    _buildRSVPSummary(invitation['guests'] as List<GuestModel>),
+                  ],
                 ),
               ),
             ],
