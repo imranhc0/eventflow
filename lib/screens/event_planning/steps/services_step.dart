@@ -163,7 +163,7 @@ class ServicesStep extends StatelessWidget {
                                     ?.copyWith(fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                '₹${_calculateServicesTotal()}',
+                                '৳${_calculateServicesTotal()}',
                                 style: Theme.of(context).textTheme.bodyLarge
                                     ?.copyWith(
                                       fontWeight: FontWeight.bold,
@@ -233,17 +233,17 @@ class ServicesStep extends StatelessWidget {
   String _getServicePrice(String service) {
     switch (service.toLowerCase()) {
       case 'photography':
-        return '₹8,000';
+        return '৳8,000';
       case 'videography':
-        return '₹12,000';
+        return '৳12,000';
       case 'decor':
-        return '₹15,000';
+        return '৳15,000';
       case 'guest handling':
-        return '₹5,000';
+        return '৳5,000';
       case 'music/dj':
-        return '₹10,000';
+        return '৳10,000';
       default:
-        return '₹5,000';
+        return '৳5,000';
     }
   }
 
