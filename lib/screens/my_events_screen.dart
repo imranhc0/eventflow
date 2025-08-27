@@ -190,7 +190,7 @@ class _MyEventsScreenState extends State<MyEventsScreen> {
                             ),
                             const SizedBox(width: 4),
                             Text(
-                              '₹${event.cost.toStringAsFixed(0)}',
+                              '৳${event.cost.toStringAsFixed(0)}',
                               style: Theme.of(context).textTheme.bodySmall
                                   ?.copyWith(
                                     color: AppColors.primary,
@@ -392,7 +392,7 @@ class _MyEventsScreenState extends State<MyEventsScreen> {
                       _buildDetailRow('Status', event.status, Icons.info),
                       _buildDetailRow(
                         'Total Cost',
-                        '₹${event.cost.toStringAsFixed(0)}',
+                        '৳${event.cost.toStringAsFixed(0)}',
                         Icons.currency_rupee,
                       ),
 
