@@ -178,7 +178,7 @@ class _VenueStepState extends State<VenueStep> {
                             widget.onNext();
                           },
                           width: double.infinity,
-                          height: 40,
+                          height: 50,
                         ),
                       ],
                     ),
