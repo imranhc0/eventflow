@@ -137,7 +137,7 @@ class _GuestListStepState extends State<GuestListStep> {
                             });
                           },
                           isOutlined: true,
-                          height: 40,
+                          height: 50,
                         ),
                       ),
                       const SizedBox(width: AppConstants.paddingMedium),
@@ -145,7 +145,7 @@ class _GuestListStepState extends State<GuestListStep> {
                         child: CustomButton(
                           text: 'Add Guest',
                           onPressed: _addGuest,
-                          height: 40,
+                          height: 50,
                         ),
                       ),
                     ],
