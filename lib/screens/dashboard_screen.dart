@@ -88,9 +88,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         image: const DecorationImage(
-                          image: NetworkImage(
-                            'https://via.placeholder.com/40x40/E53935/FFFFFF?text=S',
-                          ),
+                          image: AssetImage('assets/images/splash.jpg'),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -103,7 +101,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 // Quick Start Button
                 Container(
                   width: double.infinity,
-                  height: 60,
+                  height: 72,
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
                       colors: [Color(0xFFE53935), Color(0xFFD32F2F)],
@@ -180,7 +178,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 _buildEventCategoryCard(
                   'Wedding',
                   'Create your dream wedding celebration with our comprehensive planning tools',
-                  'https://images.unsplash.com/photo-1519741497674-611481863552?w=400&h=200&fit=crop',
+                  'assets/images/wedding.jpg',
                   () => _startEventPlanningWithType('Wedding'),
                 ),
 
@@ -189,7 +187,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 _buildEventCategoryCard(
                   'Birthday',
                   'Celebrate special moments with unforgettable birthday parties',
-                  'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=400&h=200&fit=crop',
+                  'assets/images/Birthday.jpg',
                   () => _startEventPlanningWithType('Birthday'),
                 ),
 
@@ -198,7 +196,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 _buildEventCategoryCard(
                   'Anniversary',
                   'Mark milestone moments with romantic anniversary celebrations',
-                  'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=200&fit=crop',
+                  'assets/images/anniversary.jpg',
                   () => _startEventPlanningWithType('Anniversary'),
                 ),
 
@@ -207,7 +205,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 _buildEventCategoryCard(
                   'Corporate',
                   'Professional corporate events and business celebrations',
-                  'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=200&fit=crop',
+                  'assets/images/corporate.jpg',
                   () => _startEventPlanningWithType('Corporate'),
                 ),
 
@@ -216,7 +214,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 _buildEventCategoryCard(
                   'Graduation',
                   'Celebrate academic achievements with memorable graduation parties',
-                  'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=200&fit=crop',
+                  'assets/images/graduation.jpg',
                   () => _startEventPlanningWithType('Graduation'),
                 ),
 
@@ -250,7 +248,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             BottomNavigationBarItem(icon: Icon(Icons.event), label: 'Events'),
             BottomNavigationBarItem(
               icon: Icon(Icons.message),
-              label: 'Messages',
+              label: 'Invitation',
             ),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
           ],
@@ -290,7 +288,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 topRight: Radius.circular(16),
               ),
               image: DecorationImage(
-                image: NetworkImage(imageUrl),
+                image: AssetImage(imageUrl),
                 fit: BoxFit.cover,
               ),
             ),
@@ -363,7 +361,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 // Start Planning Button
                 SizedBox(
                   width: double.infinity,
-                  height: 44,
+                  height: 50,
                   child: ElevatedButton(
                     onPressed: onTap,
                     style: ElevatedButton.styleFrom(
