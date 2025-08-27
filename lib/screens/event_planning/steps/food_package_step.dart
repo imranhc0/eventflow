@@ -30,9 +30,9 @@ class FoodPackageStep extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
-          
+
           const SizedBox(height: AppConstants.paddingLarge),
-          
+
           // Food Packages
           Expanded(
             child: Column(
@@ -40,9 +40,13 @@ class FoodPackageStep extends StatelessWidget {
                 ...AppConstants.foodPackages.map((package) {
                   final isSelected = selectedFoodPackage == package;
                   return Container(
-                    margin: const EdgeInsets.only(bottom: AppConstants.paddingMedium),
+                    margin: const EdgeInsets.only(
+                      bottom: AppConstants.paddingMedium,
+                    ),
                     child: CustomCard(
-                      backgroundColor: isSelected ? AppColors.primary.withOpacity(0.1) : AppColors.white,
+                      backgroundColor: isSelected
+                          ? AppColors.primary.withOpacity(0.1)
+                          : AppColors.white,
                       onTap: () => onFoodPackageSelected(package),
                       child: Row(
                         children: [
@@ -63,25 +67,28 @@ class FoodPackageStep extends StatelessWidget {
                               children: [
                                 Text(
                                   package,
-                                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                    fontWeight: FontWeight.w600,
-                                    color: isSelected ? AppColors.primary : AppColors.black,
-                                  ),
+                                  style: Theme.of(context).textTheme.bodyLarge
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.w600,
+                                        color: isSelected
+                                            ? AppColors.primary
+                                            : AppColors.black,
+                                      ),
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
                                   _getPackageDescription(package),
-                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: AppColors.darkGrey,
-                                  ),
+                                  style: Theme.of(context).textTheme.bodyMedium
+                                      ?.copyWith(color: AppColors.darkGrey),
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
                                   _getPackagePrice(package),
-                                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.primary,
-                                  ),
+                                  style: Theme.of(context).textTheme.bodyLarge
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        color: AppColors.primary,
+                                      ),
                                 ),
                               ],
                             ),
@@ -91,9 +98,9 @@ class FoodPackageStep extends StatelessWidget {
                     ),
                   );
                 }).toList(),
-                
+
                 const SizedBox(height: AppConstants.paddingMedium),
-                
+
                 // Cost Summary Card
                 if (selectedFoodPackage != null)
                   CustomCard(
@@ -103,9 +110,8 @@ class FoodPackageStep extends StatelessWidget {
                       children: [
                         Text(
                           'Cost Summary',
-                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: Theme.of(context).textTheme.bodyLarge
+                              ?.copyWith(fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(height: AppConstants.paddingSmall),
                         Row(
@@ -117,9 +123,8 @@ class FoodPackageStep extends StatelessWidget {
                             ),
                             Text(
                               _getPackagePrice(selectedFoodPackage!),
-                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                fontWeight: FontWeight.w600,
-                              ),
+                              style: Theme.of(context).textTheme.bodyMedium
+                                  ?.copyWith(fontWeight: FontWeight.w600),
                             ),
                           ],
                         ),
@@ -129,16 +134,16 @@ class FoodPackageStep extends StatelessWidget {
                           children: [
                             Text(
                               'Subtotal:',
-                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: Theme.of(context).textTheme.bodyLarge
+                                  ?.copyWith(fontWeight: FontWeight.bold),
                             ),
                             Text(
                               _getPackagePrice(selectedFoodPackage!),
-                              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.primary,
-                              ),
+                              style: Theme.of(context).textTheme.bodyLarge
+                                  ?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.primary,
+                                  ),
                             ),
                           ],
                         ),
@@ -148,15 +153,15 @@ class FoodPackageStep extends StatelessWidget {
               ],
             ),
           ),
-          
+
           // Continue Button
           CustomButton(
             text: 'Continue to Services',
             onPressed: selectedFoodPackage != null ? onNext : () {},
             width: double.infinity,
             height: 50,
-            backgroundColor: selectedFoodPackage != null 
-                ? AppColors.primary 
+            backgroundColor: selectedFoodPackage != null
+                ? AppColors.primary
                 : AppColors.grey,
           ),
         ],
@@ -180,13 +185,13 @@ class FoodPackageStep extends StatelessWidget {
   String _getPackagePrice(String package) {
     switch (package) {
       case 'Basic Package':
-        return '₹15,000';
+        return '৳15,000';
       case 'Premium Package':
-        return '₹25,000';
+        return '৳25,000';
       case 'Luxury Package':
-        return '₹40,000';
+        return '৳40,000';
       default:
-        return '₹20,000';
+        return '৳20,000';
     }
   }
 }
