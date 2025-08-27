@@ -43,9 +43,9 @@ class ReviewConfirmStep extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
-          
+
           const SizedBox(height: AppConstants.paddingLarge),
-          
+
           Expanded(
             child: SingleChildScrollView(
               child: Column(
@@ -69,40 +69,76 @@ class ReviewConfirmStep extends StatelessWidget {
                                 children: [
                                   Text(
                                     '$eventType Celebration',
-                                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold,
-                                      color: AppColors.primary,
-                                    ),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineMedium
+                                        ?.copyWith(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          color: AppColors.primary,
+                                        ),
                                   ),
                                   if (date != null)
                                     Text(
                                       DateFormat('MMMM dd, yyyy').format(date!),
-                                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                        color: AppColors.darkGrey,
-                                      ),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge
+                                          ?.copyWith(color: AppColors.darkGrey),
                                     ),
                                 ],
                               ),
                             ),
                           ],
                         ),
-                        
+
                         const SizedBox(height: AppConstants.paddingLarge),
-                        
+
                         // Event Details
-                        _buildDetailRow(context, 'Venue', venue, Icons.location_on),
-                        _buildDetailRow(context, 'Date', date != null ? DateFormat('MMMM dd, yyyy').format(date!) : 'Not selected', Icons.calendar_today),
-                        _buildDetailRow(context, 'Time', time, Icons.access_time),
-                        _buildDetailRow(context, 'Duration', '$duration hours', Icons.timer),
-                        _buildDetailRow(context, 'Food Package', foodPackage, Icons.restaurant),
-                        _buildDetailRow(context, 'Guests', '${guests.length} people', Icons.people),
+                        _buildDetailRow(
+                          context,
+                          'Venue',
+                          venue,
+                          Icons.location_on,
+                        ),
+                        _buildDetailRow(
+                          context,
+                          'Date',
+                          date != null
+                              ? DateFormat('MMMM dd, yyyy').format(date!)
+                              : 'Not selected',
+                          Icons.calendar_today,
+                        ),
+                        _buildDetailRow(
+                          context,
+                          'Time',
+                          time,
+                          Icons.access_time,
+                        ),
+                        _buildDetailRow(
+                          context,
+                          'Duration',
+                          '$duration hours',
+                          Icons.timer,
+                        ),
+                        _buildDetailRow(
+                          context,
+                          'Food Package',
+                          foodPackage,
+                          Icons.restaurant,
+                        ),
+                        _buildDetailRow(
+                          context,
+                          'Guests',
+                          '${guests.length} people',
+                          Icons.people,
+                        ),
                       ],
                     ),
                   ),
-                  
+
                   const SizedBox(height: AppConstants.paddingMedium),
-                  
+
                   // Services Card
                   if (services.isNotEmpty)
                     CustomCard(
@@ -111,34 +147,43 @@ class ReviewConfirmStep extends StatelessWidget {
                         children: [
                           Text(
                             'Additional Services',
-                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                              fontWeight: FontWeight.w600,
-                            ),
+                            style: Theme.of(context).textTheme.bodyLarge
+                                ?.copyWith(fontWeight: FontWeight.w600),
                           ),
                           const SizedBox(height: AppConstants.paddingMedium),
-                          ...services.map((service) => Padding(
-                            padding: const EdgeInsets.only(bottom: AppConstants.paddingSmall),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  _getServiceIcon(service),
-                                  color: AppColors.primary,
-                                  size: 20,
+                          ...services
+                              .map(
+                                (service) => Padding(
+                                  padding: const EdgeInsets.only(
+                                    bottom: AppConstants.paddingSmall,
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        _getServiceIcon(service),
+                                        color: AppColors.primary,
+                                        size: 20,
+                                      ),
+                                      const SizedBox(
+                                        width: AppConstants.paddingMedium,
+                                      ),
+                                      Text(
+                                        service,
+                                        style: Theme.of(
+                                          context,
+                                        ).textTheme.bodyMedium,
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                                const SizedBox(width: AppConstants.paddingMedium),
-                                Text(
-                                  service,
-                                  style: Theme.of(context).textTheme.bodyMedium,
-                                ),
-                              ],
-                            ),
-                          )).toList(),
+                              )
+                              .toList(),
                         ],
                       ),
                     ),
-                  
+
                   const SizedBox(height: AppConstants.paddingMedium),
-                  
+
                   // Cost Breakdown Card
                   CustomCard(
                     backgroundColor: AppColors.lightGrey,
@@ -147,49 +192,57 @@ class ReviewConfirmStep extends StatelessWidget {
                       children: [
                         Text(
                           'Cost Breakdown',
-                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            fontWeight: FontWeight.w600,
-                          ),
+                          style: Theme.of(context).textTheme.bodyLarge
+                              ?.copyWith(fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(height: AppConstants.paddingMedium),
-                        
-                        _buildCostRow(context, 'Venue', '₹20,000'),
-                        _buildCostRow(context, 'Food Package', _getFoodPackagePrice(foodPackage)),
-                        
+
+                        _buildCostRow(context, 'Venue', '৳20,000'),
+                        _buildCostRow(
+                          context,
+                          'Food Package',
+                          _getFoodPackagePrice(foodPackage),
+                        ),
+
                         if (services.isNotEmpty) ...[
                           const SizedBox(height: AppConstants.paddingSmall),
                           Text(
                             'Services:',
-                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              fontWeight: FontWeight.w500,
-                            ),
+                            style: Theme.of(context).textTheme.bodyMedium
+                                ?.copyWith(fontWeight: FontWeight.w500),
                           ),
-                          ...services.map((service) => _buildCostRow(
-                            context, 
-                            '  • $service', 
-                            _getServicePrice(service),
-                          )).toList(),
+                          ...services
+                              .map(
+                                (service) => _buildCostRow(
+                                  context,
+                                  '  • $service',
+                                  _getServicePrice(service),
+                                ),
+                              )
+                              .toList(),
                         ],
-                        
+
                         const Divider(thickness: 2),
-                        
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               'Total Cost:',
-                              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: Theme.of(context).textTheme.headlineMedium
+                                  ?.copyWith(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                             ),
                             Text(
-                              '₹${_calculateTotalCost()}',
-                              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.primary,
-                              ),
+                              '৳${_calculateTotalCost()}',
+                              style: Theme.of(context).textTheme.headlineMedium
+                                  ?.copyWith(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.primary,
+                                  ),
                             ),
                           ],
                         ),
@@ -200,9 +253,9 @@ class ReviewConfirmStep extends StatelessWidget {
               ),
             ),
           ),
-          
+
           const SizedBox(height: AppConstants.paddingMedium),
-          
+
           // Confirm Button
           CustomButton(
             text: 'Confirm & Pay Advance',
@@ -215,7 +268,12 @@ class ReviewConfirmStep extends StatelessWidget {
     );
   }
 
-  Widget _buildDetailRow(BuildContext context, String label, String value, IconData icon) {
+  Widget _buildDetailRow(
+    BuildContext context,
+    String label,
+    String value,
+    IconData icon,
+  ) {
     return Padding(
       padding: const EdgeInsets.only(bottom: AppConstants.paddingSmall),
       child: Row(
@@ -228,14 +286,11 @@ class ReviewConfirmStep extends StatelessWidget {
               children: [
                 Text(
                   '$label:',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
                 ),
-                Text(
-                  value,
-                  style: Theme.of(context).textTheme.bodyMedium,
-                ),
+                Text(value, style: Theme.of(context).textTheme.bodyMedium),
               ],
             ),
           ),
@@ -250,15 +305,12 @@ class ReviewConfirmStep extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            item,
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
+          Text(item, style: Theme.of(context).textTheme.bodyMedium),
           Text(
             cost,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              fontWeight: FontWeight.w500,
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
           ),
         ],
       ),
@@ -308,36 +360,36 @@ class ReviewConfirmStep extends StatelessWidget {
   String _getFoodPackagePrice(String package) {
     switch (package) {
       case 'Basic Package':
-        return '₹15,000';
+        return '৳15,000';
       case 'Premium Package':
-        return '₹25,000';
+        return '৳25,000';
       case 'Luxury Package':
-        return '₹40,000';
+        return '৳40,000';
       default:
-        return '₹20,000';
+        return '৳20,000';
     }
   }
 
   String _getServicePrice(String service) {
     switch (service.toLowerCase()) {
       case 'photography':
-        return '₹8,000';
+        return '৳8,000';
       case 'videography':
-        return '₹12,000';
+        return '৳12,000';
       case 'decor':
-        return '₹15,000';
+        return '৳15,000';
       case 'guest handling':
-        return '₹5,000';
+        return '৳5,000';
       case 'music/dj':
-        return '₹10,000';
+        return '৳10,000';
       default:
-        return '₹5,000';
+        return '৳5,000';
     }
   }
 
   String _calculateTotalCost() {
     int total = 20000; // Base venue cost
-    
+
     // Add food package cost
     switch (foodPackage) {
       case 'Basic Package':
@@ -352,7 +404,7 @@ class ReviewConfirmStep extends StatelessWidget {
       default:
         total += 20000;
     }
-    
+
     // Add services cost
     for (String service in services) {
       switch (service.toLowerCase()) {
@@ -375,7 +427,7 @@ class ReviewConfirmStep extends StatelessWidget {
           total += 5000;
       }
     }
-    
+
     return total.toString();
   }
 }
