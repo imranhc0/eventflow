@@ -59,7 +59,7 @@ class _GuestListStepState extends State<GuestListStep> {
       }
     }
     widget.onGuestListChanged(updatedList);
-    
+
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Sample guests imported successfully!'),
@@ -82,9 +82,9 @@ class _GuestListStepState extends State<GuestListStep> {
               fontWeight: FontWeight.w600,
             ),
           ),
-          
+
           const SizedBox(height: AppConstants.paddingLarge),
-          
+
           // Action Buttons
           Row(
             children: [
@@ -93,7 +93,7 @@ class _GuestListStepState extends State<GuestListStep> {
                   text: 'Import from Contacts',
                   onPressed: _importFromContacts,
                   isOutlined: true,
-                  height: 45,
+                  height: 50,
                 ),
               ),
               const SizedBox(width: AppConstants.paddingMedium),
@@ -105,14 +105,14 @@ class _GuestListStepState extends State<GuestListStep> {
                       _showAddForm = !_showAddForm;
                     });
                   },
-                  height: 45,
+                  height: 50,
                 ),
               ),
             ],
           ),
-          
+
           const SizedBox(height: AppConstants.paddingMedium),
-          
+
           // Add Guest Form
           if (_showAddForm)
             CustomCard(
@@ -153,19 +153,19 @@ class _GuestListStepState extends State<GuestListStep> {
                 ],
               ),
             ),
-          
+
           const SizedBox(height: AppConstants.paddingMedium),
-          
+
           // Guest Count
           Text(
             'Guests (${widget.guestList.length})',
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              fontWeight: FontWeight.w600,
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
           ),
-          
+
           const SizedBox(height: AppConstants.paddingMedium),
-          
+
           // Guest List
           Expanded(
             child: widget.guestList.isEmpty
@@ -181,16 +181,14 @@ class _GuestListStepState extends State<GuestListStep> {
                         const SizedBox(height: AppConstants.paddingMedium),
                         Text(
                           'No guests added yet',
-                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: AppColors.grey,
-                          ),
+                          style: Theme.of(context).textTheme.bodyLarge
+                              ?.copyWith(color: AppColors.grey),
                         ),
                         const SizedBox(height: AppConstants.paddingSmall),
                         Text(
                           'Add guests manually or import from contacts',
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: AppColors.grey,
-                          ),
+                          style: Theme.of(context).textTheme.bodyMedium
+                              ?.copyWith(color: AppColors.grey),
                           textAlign: TextAlign.center,
                         ),
                       ],
@@ -201,14 +199,18 @@ class _GuestListStepState extends State<GuestListStep> {
                     itemBuilder: (context, index) {
                       final guest = widget.guestList[index];
                       return Container(
-                        margin: const EdgeInsets.only(bottom: AppConstants.paddingSmall),
+                        margin: const EdgeInsets.only(
+                          bottom: AppConstants.paddingSmall,
+                        ),
                         child: CustomCard(
                           child: Row(
                             children: [
                               CircleAvatar(
                                 backgroundColor: AppColors.primary,
                                 child: Text(
-                                  guest.isNotEmpty ? guest[0].toUpperCase() : 'G',
+                                  guest.isNotEmpty
+                                      ? guest[0].toUpperCase()
+                                      : 'G',
                                   style: const TextStyle(
                                     color: AppColors.white,
                                     fontWeight: FontWeight.bold,
@@ -219,13 +221,15 @@ class _GuestListStepState extends State<GuestListStep> {
                               Expanded(
                                 child: Text(
                                   guest,
-                                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                                  style: Theme.of(context).textTheme.bodyLarge
+                                      ?.copyWith(fontWeight: FontWeight.w500),
                                 ),
                               ),
                               IconButton(
-                                icon: const Icon(Icons.delete_outline, color: Colors.red),
+                                icon: const Icon(
+                                  Icons.delete_outline,
+                                  color: Colors.red,
+                                ),
                                 onPressed: () => _removeGuest(index),
                               ),
                             ],
@@ -235,7 +239,7 @@ class _GuestListStepState extends State<GuestListStep> {
                     },
                   ),
           ),
-          
+
           // Continue Button
           CustomButton(
             text: 'Continue to Review',
